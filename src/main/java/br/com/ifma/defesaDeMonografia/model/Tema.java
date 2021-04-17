@@ -1,9 +1,16 @@
 package br.com.ifma.defesaDeMonografia.model;
 
-public class Tema {
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+public class Tema {
+  @Id
+  @GeneratedValue
+  int id;
   String titulo;
   String fundamentos;
-  Referencia referencia;
+  @OneToMany(mappedBy = "temas")
+  List<Referencia> referencias;
 
 }

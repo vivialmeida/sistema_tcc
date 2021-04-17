@@ -3,14 +3,17 @@ package br.com.ifma.defesaDeMonografia.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.time.LocalDateTime;
 
 @Entity
-public class Curso {
+public class Encontro {
   @Id
   @GeneratedValue
   int id;
-  String nome;
-  Integer qtPeriodos;
-  String sigla;
-  String departamento;
+  @OneToOne
+  Orientacao orientacao;
+  LocalDateTime dataHora;
+  String local;
+
 }

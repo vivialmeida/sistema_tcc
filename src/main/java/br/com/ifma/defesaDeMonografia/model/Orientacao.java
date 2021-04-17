@@ -4,13 +4,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Referencia {
+public class Orientacao {
   @Id
   @GeneratedValue
   int id;
-  String livro;
-  String autor;
-  Integer edicão;
+  @OneToOne
+  Orientando orientando;
+  @OneToOne
+  Orientador orientador;
+  @OneToOne
+  Tema tema;
   @OneToMany
-  List<Tema> temas;
+  List<Encontro> encontros;
 }
