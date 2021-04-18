@@ -5,6 +5,7 @@ import br.com.ifma.defesaDeMonografia.model.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -31,12 +32,18 @@ public class OrientadorServiceImpl implements OrientadorService {
   @Override
   public List<Orientador> recuperarOrientadores() {
     List<Orientador> orientadores = orientadorMapper.recuperarOrientadores();
-    System.out.println(orientadores.toString());
     return orientadores;
   }
 
   @Override
-  public void marcarEncontro(Encontro encontro) {
+  public void marcarEncontro(int idOrientacao, LocalDateTime data, String local) {
+    Encontro encontro = Encontro.builder()
+        .dataHora(data)
+        .orientacao(new Orientacao(idOrientacao))
+        .local(local)
+        .build();
+    orientadorMapper.marcarEncontro(encontro);
+
 
   }
 }

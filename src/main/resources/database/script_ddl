@@ -1,0 +1,127 @@
+create schema tcc collate utf8mb4_0900_ai_ci;
+
+create table curso
+(
+	id int auto_increment
+		primary key,
+	departamento varchar(255) null,
+	nome varchar(255) null,
+	qt_periodos int null,
+	sigla varchar(255) null
+)
+engine=MyISAM;
+
+create table encontro
+(
+	id int auto_increment
+		primary key,
+	data_hora datetime null,
+	local varchar(255) null,
+	orientacao_id int null
+)
+engine=MyISAM;
+
+create index FKnobevm6u335bqwovgim9bgnpe
+	on encontro (orientacao_id);
+
+create table orientacao
+(
+	id int auto_increment
+		primary key,
+	orientador_id int null,
+	orientando_id int null,
+	tema_id int null
+)
+engine=MyISAM;
+
+create index FKcf7ngkwbrmipo3i0mic8pv54j
+	on orientacao (orientador_id);
+
+create index FKp0d0mhy19df4u8u6llx9b8vjx
+	on orientacao (orientando_id);
+
+create index FKri2j15x6pokvfa6h4tsou6b8u
+	on orientacao (tema_id);
+
+create table orientacao_encontros
+(
+	orientacao_id int not null,
+	encontros_id int not null,
+	constraint UK_c9qnuryxrf1h8cxeb70yvyjyx
+		unique (encontros_id)
+)
+engine=MyISAM;
+
+create index FKbdct9ejw0qj8vojwpk4fuvax8
+	on orientacao_encontros (orientacao_id);
+
+create table orientador
+(
+	id int auto_increment
+		primary key,
+	nome varchar(255) null,
+	titulacao varchar(255) null
+)
+engine=MyISAM;
+
+create table orientador_orientacoes
+(
+	orientador_id int not null,
+	orientacoes_id int not null,
+	constraint UK_rydchefi5pck5vsidweuarn6u
+		unique (orientacoes_id)
+)
+engine=MyISAM;
+
+create index FKr6brhycvc2fkg1ixda4xdpn2l
+	on orientador_orientacoes (orientador_id);
+
+create table orientando
+(
+	id int auto_increment
+		primary key,
+	matricula varchar(255) null,
+	nome_aluno varchar(255) null,
+	curso_id int null,
+	orientacao_id int null
+)
+engine=MyISAM;
+
+create index FKhlrp4q4xn0vjk0sq81l639kdg
+	on orientando (orientacao_id);
+
+create index FKpcaya31k6b0c5hjx36qym6534
+	on orientando (curso_id);
+
+create table referencia
+(
+	id int auto_increment
+		primary key,
+	autor varchar(255) null,
+	edicao int null,
+	livro varchar(255) null,
+	temas_id int null
+)
+engine=MyISAM;
+
+create table referencia_temas
+(
+	referencia_id int not null,
+	temas_id int not null,
+	constraint UK_ljlli3v37emeyxairavncs3m8
+		unique (temas_id)
+)
+engine=MyISAM;
+
+create index FK4wr13k9j5t58yrgfwfop5xl5d
+	on referencia_temas (referencia_id);
+
+create table tema
+(
+	id int auto_increment
+		primary key,
+	fundamentos varchar(255) null,
+	titulo varchar(255) null
+)
+engine=MyISAM;
+

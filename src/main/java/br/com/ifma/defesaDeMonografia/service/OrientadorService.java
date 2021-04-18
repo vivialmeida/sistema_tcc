@@ -2,6 +2,7 @@ package br.com.ifma.defesaDeMonografia.service;
 
 import br.com.ifma.defesaDeMonografia.model.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrientadorService {     
@@ -9,7 +10,7 @@ public interface OrientadorService {
   List<Tema> recuperarTemas();
   void adicionarReferencias(Tema tema, Referencia referencia);
   List<Orientador>recuperarOrientadores();
-  void marcarEncontro(Encontro encontro);
+  void marcarEncontro(int idOrientacao, LocalDateTime data, String pauta);
 
 
 }

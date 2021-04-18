@@ -1,0 +1,63 @@
+select  * from orientacao
+
+
+select nome_aluno, titulo
+from orientacao inner join orientador o on orientacao.orientador_id = o.id
+inner join orientando on orientando.id = orientador_id
+inner join tema on tema.id =  tema_id
+ where orientacao.orientador_id = 1
+
+
+script dml
+
+--- tema
+insert tema (fundamentos, titulo)values
+('','Tecnologias e Sustentabilidade'),
+('','Tecnologias e Movimentos Sociais'),
+('','Vida Artificial'),
+('','Computação em Nuvens'),
+('','Realidade Aumentada');
+
+--- referencia
+insert into referencia(autor, edicao, livro, temas_id)
+values('Romero Marta Adriana Bustos' ,2,'Tecnologia E Sustentabilidade Para A Humanizaçao', 1),
+        ('Roberto Senise Lisboa' ,5,'Direito na Sociedade da Informação', 2),
+        ('Steven Levy' ,1,'Vida Artificial Em Demanda De Uma Nova Criação', 3),
+    ('Manoel Veras de Sousa Neto' ,1,'Computação em Nuvem: Nova Arquitetura de TI', 4),
+    ('CEZAR TAURION' ,1,'Cloud Computing', 4),
+    ('Arivelto Bustamante Fialho' ,1,'Realidade Virtual e Aumentada Tecnologias para Aplicações Profissionais', 5);
+
+-- curso
+insert  into curso(departamento, nome, qt_periodos, sigla)
+values ('Informatica', 'Sistemas de Informacao', '8', 'SI');
+
+-- Orientador
+
+insert into orientador (nome, titulacao)
+values ('Joao Pereira', 'Doutor'),
+    ('Paulo Serra', 'Doutor'),
+    ('Rita Castro', 'Doutor');
+
+-- Orientando
+
+insert into orientando(matricula, nome_aluno, curso_id)
+values ('8688SI', 'Arthur Pereira Silva',1),
+        ('4568SI', 'Phelipe Araujo Barbosa',1),
+    ('3547SI', 'Sheila Sousa Aragao',1),
+    ('4567SI', 'Paula Almeida Viegas',1);
+
+
+
+insert into orientacao(orientador_id, orientando_id, tema_id)
+values(1, 1, 1);
+insert into orientacao(orientador_id, orientando_id, tema_id)
+    values(1, 2, 2);
+insert into orientacao(orientador_id, orientando_id, tema_id)
+    values(2, 3, 3);
+insert into orientacao(orientador_id, orientando_id, tema_id)
+    values(3, 4, 4);
+
+
+
+
+

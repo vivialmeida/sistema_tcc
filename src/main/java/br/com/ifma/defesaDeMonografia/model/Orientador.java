@@ -1,15 +1,16 @@
 package br.com.ifma.defesaDeMonografia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 public class Orientador {
 
-  @Id @GeneratedValue
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
   String nome;
   String titulacao;

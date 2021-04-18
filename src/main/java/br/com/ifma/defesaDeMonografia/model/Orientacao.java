@@ -1,12 +1,15 @@
 package br.com.ifma.defesaDeMonografia.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
 @Entity
 public class Orientacao {
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
   @OneToOne
   Orientando orientando;
@@ -16,4 +19,8 @@ public class Orientacao {
   Tema tema;
   @OneToMany
   List<Encontro> encontros;
+
+  public Orientacao(int id) {
+    this.id = id;
+  }
 }

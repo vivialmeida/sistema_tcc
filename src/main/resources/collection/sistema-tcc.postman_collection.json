@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "d0cc6d8e-6072-41f7-99fd-a7f43a4b69a1",
+		"name": "sistema-tcc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Orientadores",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/sistema-tcc/orientadores/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sistema-tcc",
+						"orientadores",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Orientandos Por Orientador",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/orientadores/orientandos/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"orientadores",
+						"orientandos",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inserir Agendamento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/sistema-tcc/orientadores/orientandos/agendar?idOrientacao=1&data=2021-04-22T08:30:00&local=Biblioteca",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sistema-tcc",
+						"orientadores",
+						"orientandos",
+						"agendar"
+					],
+					"query": [
+						{
+							"key": "idOrientacao",
+							"value": "1"
+						},
+						{
+							"key": "data",
+							"value": "2021-04-22T08:30:00"
+						},
+						{
+							"key": "local",
+							"value": "Biblioteca"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="br.com.ifma.defesaDeMonografia.mapper.OrientadorMapper">
+
+    <resultMap id="mapOrientando" type="br.com.ifma.defesaDeMonografia.model.Orientando">
+        <result column="nome_aluno" property="nomeAluno"/>
+        <result column="titulo" property="orientacao.tema.titulo"/>
+
+    </resultMap>
+
+    <select id="recuperarOrientadores" resultType="br.com.ifma.defesaDeMonografia.model.Orientador">
+
+    select * from orientador
+
+    </select>
+    <select id="recuperarOrientandoPorOrientador" resultMap="mapOrientando">
+    select nome_aluno, titulo
+    from orientacao inner join orientador o on orientacao.orientador_id = o.id
+    inner join orientando on orientando.id = orientador_id
+    inner join tema on tema.id =  tema_id
+     where orientacao.orientador_id = #{idOrientador}
+    </select>
+
+
+    <insert id="marcarEncontro" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+       INSERT into encontro(data_hora, local, orientacao_id)
+       values(#{encontro.dataHora}, #{encontro.local}, #{encontro.orientacao.id})
+        </insert>
+
+</mapper>

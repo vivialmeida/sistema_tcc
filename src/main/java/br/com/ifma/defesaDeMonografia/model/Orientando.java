@@ -1,15 +1,15 @@
 package br.com.ifma.defesaDeMonografia.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import lombok.Data;
 
+import javax.persistence.*;
+
+@Data
 @Entity
 public class Orientando {
 
   @Id
-  @GeneratedValue
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
   String nomeAluno;
   String matricula;
